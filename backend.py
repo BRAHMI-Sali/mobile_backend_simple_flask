@@ -12,8 +12,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 def get_news_all_articles():
     data = []
     json_path = os.path.join(BASE_DIR, 'news_data.json')
-    with open(json_path, 'r') as file:
-        data = json.load(file)
+json_path = os.path.join(os.path.dirname(__file__), 'news_data.json')
+json_path = os.path.join(os.path.dirname(__file__), 'news_data.json')
+with open(json_path, 'r') as file:
+    data = json.load(file)
     return json.dumps(data)
 
 @app.route('/news.categories.get')
