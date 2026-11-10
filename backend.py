@@ -1,22 +1,20 @@
 from flask import Flask
 import json
-import datetime
 import os
+import datetime
 
 app = Flask(__name__)
 
-# Helper to locate files relative to backend.py
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 @app.route('/news.all.get')
 def get_news_all_articles():
-    data = []
     json_path = os.path.join(BASE_DIR, 'news_data.json')
-json_path = os.path.join(os.path.dirname(__file__), 'news_data.json')
-json_path = os.path.join(os.path.dirname(__file__), 'news_data.json')
-with open(json_path, 'r') as file:
-    data = json.load(file)
+    with open(json_path, 'r') as file:
+        data = json.load(file)
     return json.dumps(data)
+
 
 @app.route('/news.categories.get')
 def get_news_categories():
@@ -32,9 +30,11 @@ def get_news_categories():
     }
     return json.dumps(data)
 
+
 @app.route('/')
 def index():
     return 'Welcome ENSIA Students from Flask!'
 
 
-
+if __name__ == "__main__":
+    app.run(port=8080)
